@@ -5,6 +5,7 @@ from csv import writer
 ######################################################################################################################
 
 def show_topic(main_soup):
+	os.system('cls' if os.name == 'nt' else 'clear')
 	for item in main_soup.select(".topicContentName"):
 		print(item.get_text())
 
@@ -13,13 +14,13 @@ def check_answer(num):
 	if user_answer.lower() != quote_author[num].get_text().lower():
 		global count
 		count = count - 1
-		os.system('cls')
 		return False
 	else:
 		print("\n\nYES!!!! That's Right Answer")
 		return True
 
 def show_quote(num, count):
+	os.system('cls' if os.name == 'nt' else 'clear')
 	print(quote_text[num].get_text())
 	print(f"\n\nYou have {count-1} Chances remaining")
 
@@ -45,9 +46,7 @@ while(True):
 	show_topic(main_soup)
 	user_input_topic = input("Choose a Topic from the List: ")
 	if user_input_topic not in topic_list:
-		os.system('cls')
 		continue
-	os.system('cls')
 	index = topic_list.index(user_input_topic)
 	topic_link = url + topic_url_list[index]
 
@@ -109,7 +108,6 @@ while(True):
 		if play_again[0].lower() == "n":
 			exit()
 		elif play_again[0].lower() == "c":
-			os.system('cls')
+			os.system('cls' if os.name == 'nt' else 'clear')
 			continue
-		os.system('cls')
 		break
